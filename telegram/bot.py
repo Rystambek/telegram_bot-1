@@ -1,6 +1,8 @@
 import requests
 from .message import Message
 from .update import Update
+from .photo import Photo
+from pprint import pprint
 
 class Bot:
     def __init__(self,token:str):
@@ -67,7 +69,16 @@ class Bot:
         returns:
             A message object
         """
-        pass
+        url = f'{self.base_url}sendPhoto'
+        data = {
+            'chat_id':chat_id,
+            'photo':photo
+        }
+
+        response = requests.post(url=url, data=data)
+        response = response.json()
+
+        return data
 
 
     def sendSticker(self,chat_id:int,sticker:str):
@@ -128,6 +139,5 @@ class Bot:
         pass
 
     
-      
 
 
