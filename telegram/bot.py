@@ -1,6 +1,6 @@
 import requests
 from .message import Message
-
+from .update import Update
 
 class Bot:
     def __init__(self,token:str):
@@ -52,7 +52,11 @@ class Bot:
         returns:
             An array of update objects
         """
-        pass
+        url = f'{self.base_url}getUpdates'
+        response = requests.get(url)
+        data = response.json()
+        update = Update(data['result'][-1])
+        return update
 
     def sendPhoto(self,chat_id:int,photo:str):
         """
