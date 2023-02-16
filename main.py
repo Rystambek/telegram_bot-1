@@ -20,6 +20,10 @@ while True:
     if update.update_id != last_update_id:
         last_update_id = update.update_id
         chat_id = update.chat.id
-        text = update.message.text
-        bot.sendMessage(chat_id, text)
+        # if 'text' in bot.Updates().keys():
+        #     text = update.message.text
+        #     bot.sendMessage(chat_id, text)
+        if 'photo' in bot.Updates().keys():
+            photo = update.message.photo.file_id
+            bot.sendPhoto(chat_id,photo)
     sleep(2)
