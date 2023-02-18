@@ -90,7 +90,16 @@ class Bot:
         returns:
             A message object
         """
-        pass
+        url = f'{self.base_url}sendSticker'
+        data = {
+            'chat_id':chat_id,
+            'sticker':sticker
+        }
+
+        response = requests.post(url=url, data=data)
+        response = response.json()
+
+        return data
 
     def sendDocument(self,chat_id:int,document:str):
         """
@@ -112,7 +121,16 @@ class Bot:
         returns:
             A message object
         """
-        pass
+        url = f'{self.base_url}sendVideo'
+        data = {
+            'chat_id':chat_id,
+            'video':video
+        }
+
+        response = requests.post(url=url, data=data)
+        response = response.json()
+
+        return data
 
     def sendLocation(self,chat_id:int,latitude:float,longitude:float):
         """
